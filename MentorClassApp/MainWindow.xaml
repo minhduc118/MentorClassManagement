@@ -1,0 +1,68 @@
+﻿<Window x:Class="MentorClassApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MentorClassApp"
+        mc:Ignorable="d"
+        Title="Mentor Class Manager" Height="600" Width="1200"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#37474F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="5,2"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="4"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Main Content -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar Menu -->
+        <Border Background="#263238" Grid.Column="0">
+            <StackPanel>
+                <TextBlock Text="🎓 Mentor Class" 
+                           FontSize="20" 
+                           FontWeight="Bold" 
+                           Foreground="White" 
+                           Margin="15" />
+
+                <Button Content="🏠 Dashboard" Click="Dashboard_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="📚 Class Management" Click="Class_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="👩‍🎓 Student Management" Click="Student_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="📝 Enrollment Management" Click="Enrollment_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="💳 Invoice Management" Click="Invoice_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="💰 Payment Management" Click="Payment_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="📖 Lesson Management" Click="Lesson_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="📊 Teaching Progress" Click="TeachingProgress_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="📈 Report / Export" Click="Report_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Column="1" Background="#FAFAFA">
+            <ContentControl x:Name="MainContent"/>
+        </Grid>
+    </Grid>
+</Window>

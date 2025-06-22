@@ -1,0 +1,17 @@
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\bin\Debug\net8.0\Repository.deps.json
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\bin\Debug\net8.0\Repository.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\bin\Debug\net8.0\Repository.pdb
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\bin\Debug\net8.0\BusinessObjects.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\bin\Debug\net8.0\DataAccessLayer.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\bin\Debug\net8.0\BusinessObjects.pdb
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\bin\Debug\net8.0\DataAccessLayer.pdb
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.csproj.Up2Date
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\refint\Repository.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.pdb
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\ref\Repository.dll
