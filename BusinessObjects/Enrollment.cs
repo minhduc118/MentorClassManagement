@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace BusinessObjects;
+
 public partial class Enrollment
 {
     public int EnrollmentId { get; set; }
@@ -12,7 +13,9 @@ public partial class Enrollment
 
     public DateTime EnrollmentDate { get; set; }
 
-    public virtual Class Class { get; set; } = null!;
+    public string? Note { get; set; }
+
+    public virtual MentorClass Class { get; set; } = null!;
 
     public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
 

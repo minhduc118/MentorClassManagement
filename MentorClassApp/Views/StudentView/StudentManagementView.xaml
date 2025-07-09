@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="MentorClassApp.Views.StudentManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               Height="491" Width="970">
+    
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề -->
+        <TextBlock Grid.Row="0" Text="Quản lý học viên"
+                   FontSize="25" FontWeight="Bold" Foreground="#2C3E50"
+                   Margin="0,0,0,16" HorizontalAlignment="Left"/>
+
+        <!-- Danh sách học viên -->
+        <GroupBox Grid.Row="1" Header="Danh Sách Học Viên" FontWeight="Bold" Margin="0,0,0,8">
+            <DataGrid x:Name="StudentsDataGrid"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      SelectionChanged="StudentsDataGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding StudentId}" Width="60"/>
+                    <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="170"/>
+                    <DataGridTextColumn Header="Điện thoại" Binding="{Binding Phone}" Width="120"/>
+                    <DataGridTextColumn Header="Ngày sinh" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Width="120"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <!-- Nhập liệu -->
+        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,10,0,0">
+         
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                <Button Content="Thêm mới" Width="80" Margin="5,0,5,0" Click="Add_Click"/>
+                <Button Content="Sửa" Width="60" Margin="5,0,5,0" Click="Edit_Click"/>
+                <Button Content="Xóa" Width="60" Margin="5,0,5,0" Click="Delete_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

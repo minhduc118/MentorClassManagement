@@ -84,7 +84,7 @@ namespace MentorClassApp.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MentorClassApp;component/views/addeditstudentwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MentorClassApp;V1.0.0.0;component/views/addeditstudentwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AddEditStudentWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

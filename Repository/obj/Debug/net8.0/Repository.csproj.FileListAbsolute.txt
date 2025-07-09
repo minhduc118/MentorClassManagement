@@ -15,3 +15,4 @@ D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\o
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\refint\Repository.dll
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.pdb
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\ref\Repository.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Repository\obj\Debug\net8.0\Repository.sourcelink.json

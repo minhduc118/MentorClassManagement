@@ -13,3 +13,4 @@ D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\DataAccessLa
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.sourcelink.json

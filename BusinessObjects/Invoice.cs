@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace BusinessObjects;
+
 public partial class Invoice
 {
     public int InvoiceId { get; set; }

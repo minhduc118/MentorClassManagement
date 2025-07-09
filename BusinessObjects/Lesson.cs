@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace BusinessObjects;
+
 public partial class Lesson
 {
     public int LessonId { get; set; }
@@ -12,9 +13,11 @@ public partial class Lesson
 
     public string? Content { get; set; }
 
-    public int OrderNumber { get; set; }
+    public string? Record { get; set; }
 
     public bool? IsTaught { get; set; }
 
-    public virtual Class Class { get; set; } = null!;
+    public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
+
+    public virtual MentorClass Class { get; set; } = null!;
 }

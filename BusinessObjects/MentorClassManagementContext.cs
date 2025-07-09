@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace BusinessObjects;
+
 public partial class MentorClassManagementContext : DbContext
 {
     public MentorClassManagementContext()
@@ -15,7 +15,9 @@ public partial class MentorClassManagementContext : DbContext
     {
     }
 
-    public virtual DbSet<Class> Classes { get; set; }
+    public virtual DbSet<Attendance> Attendances { get; set; }
+
+    public virtual DbSet<MentorClass> Classes { get; set; }
 
     public virtual DbSet<Enrollment> Enrollments { get; set; }
 
@@ -30,17 +32,32 @@ public partial class MentorClassManagementContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DBContext"));
-        }
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("server=localhost;database= MentorClassManagement;uid=sa;pwd=123;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Class>(entity =>
+        modelBuilder.Entity<Attendance>(entity =>
+        {
+            entity.HasKey(e => e.AttendanceId).HasName("PK__Attendan__8B69263C9455F981");
+
+            entity.Property(e => e.AttendanceId).HasColumnName("AttendanceID");
+            entity.Property(e => e.LessonId).HasColumnName("LessonID");
+            entity.Property(e => e.Note).HasMaxLength(255);
+            entity.Property(e => e.StudentId).HasColumnName("StudentID");
+
+            entity.HasOne(d => d.Lesson).WithMany(p => p.Attendances)
+                .HasForeignKey(d => d.LessonId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Attendanc__Lesso__02FC7413");
+
+            entity.HasOne(d => d.Student).WithMany(p => p.Attendances)
+                .HasForeignKey(d => d.StudentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Attendanc__Stude__03F0984C");
+        });
+
+        modelBuilder.Entity<MentorClass>(entity =>
         {
             entity.HasKey(e => e.ClassId).HasName("PK__Classes__CB1927A0950CA22E");
 
@@ -58,6 +75,7 @@ public partial class MentorClassManagementContext : DbContext
             entity.Property(e => e.EnrollmentDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.Note).HasMaxLength(255);
             entity.Property(e => e.StudentId).HasColumnName("StudentID");
 
             entity.HasOne(d => d.Class).WithMany(p => p.Enrollments)
@@ -100,7 +118,7 @@ public partial class MentorClassManagementContext : DbContext
             entity.Property(e => e.ClassId).HasColumnName("ClassID");
             entity.Property(e => e.IsTaught).HasDefaultValue(false);
             entity.Property(e => e.Title).HasMaxLength(200);
-
+            entity.Property(e => e.Record).HasMaxLength(255);
             entity.HasOne(d => d.Class).WithMany(p => p.Lessons)
                 .HasForeignKey(d => d.ClassId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

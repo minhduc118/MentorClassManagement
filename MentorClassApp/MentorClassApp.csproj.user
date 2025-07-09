@@ -10,13 +10,25 @@
     <Compile Update="LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\AddEditStudentWindow.xaml.cs">
+    <Compile Update="Views\ClassView\AddEditClassWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ClassManagementView.xaml.cs">
+    <Compile Update="Views\ClassView\AttendanceView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StudentManagementView.xaml.cs">
+    <Compile Update="Views\ClassView\LessonManagementView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ClassView\StudentManagementErollmentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StudentView\AddEditStudentWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ClassView\ClassManagementView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StudentView\StudentManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,13 +39,25 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\AddEditStudentWindow.xaml">
+    <Page Update="Views\ClassView\AddEditClassWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ClassManagementView.xaml">
+    <Page Update="Views\ClassView\AttendanceView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\StudentManagementView.xaml">
+    <Page Update="Views\ClassView\LessonManagementView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ClassView\StudentManagementErollmentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StudentView\AddEditStudentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ClassView\ClassManagementView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StudentView\StudentManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

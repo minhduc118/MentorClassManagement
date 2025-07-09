@@ -17,3 +17,4 @@ D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\refint\Services.dll
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.pdb
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\ref\Services.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.sourcelink.json

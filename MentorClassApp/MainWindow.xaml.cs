@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MentorClassApp.Views.ClassView;
 
 namespace MentorClassApp
 {
@@ -65,5 +66,11 @@ namespace MentorClassApp
         {
 
         }
+
+        public void LoadContent(UserControl control) {
+            MainContent.Content = control;
+        }
+
+        
     }
 }
