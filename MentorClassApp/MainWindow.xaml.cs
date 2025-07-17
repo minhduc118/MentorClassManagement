@@ -8,7 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BusinessObjects;
 using MentorClassApp.Views.ClassView;
+using MentorClassApp.Views.DashBoard;
 
 namespace MentorClassApp
 {
@@ -20,11 +22,24 @@ namespace MentorClassApp
         public MainWindow()
         {
             InitializeComponent();
-        }
+            LoginControlView.LoginSuccess += OnLoginSuccess;
 
+            MainContent.Visibility = Visibility.Collapsed;
+            LoginOverlay.Visibility = Visibility.Visible;
+
+        }
+        private void OnLoginSuccess(User user)
+        {
+            // Ẩn login overlay
+            LoginOverlay.Visibility = Visibility.Collapsed;
+            MainContent.Visibility = Visibility.Visible;
+
+            MainContent.Content = new MentorClassApp.Views.DashBoard.MentorClassDashboard();
+            this.WindowState = WindowState.Maximized;
+        }
         private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
-
+            MainContent.Content = new MentorClassApp.Views.DashBoard.MentorClassDashboard();
         }
 
         private void Class_Click(object sender, RoutedEventArgs e)
@@ -37,31 +52,19 @@ namespace MentorClassApp
             MainContent.Content = new MentorClassApp.Views.StudentManagementView();
         }
 
-        private void Enrollment_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void Invoice_Click(object sender, RoutedEventArgs e)
         {
-
+            MainContent.Content = new MentorClassApp.Views.InvoiceView.InvoiceManagementView();
         }
 
-        private void Payment_Click(object sender, RoutedEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Lesson_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TeachingProgress_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+      
         private void Report_Click(object sender, RoutedEventArgs e)
         {
 

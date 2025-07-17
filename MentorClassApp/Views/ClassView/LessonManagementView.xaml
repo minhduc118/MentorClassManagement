@@ -4,7 +4,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Height="500" Width="970">
+             MinHeight="500" MinWidth="970">
+
+    <!-- Shared Styles -->
+    <UserControl.Resources>
+        <!-- Nút bo tròn -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#007BFF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="4,2"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -13,95 +43,111 @@
         </Grid.RowDefinitions>
 
         <!-- Tiêu đề -->
-        <TextBlock x:Name="TitleTextBox"  FontSize="25" FontWeight="Bold"
-                   Foreground="#2C3E50" Margin="0,0,0,16" Grid.Row="0"/>
+        <TextBlock x:Name="TitleTextBox"
+                   FontSize="25" FontWeight="Bold"
+                   Foreground="#2C3E50"
+                   Margin="0,0,0,16"
+                   Grid.Row="0"/>
 
         <!-- Danh sách bài học -->
-        <DataGrid x:Name="LessonsDataGrid"
-                  Grid.Row="1"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  SelectionMode="Single"
-                  Margin="0,0,0,10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding LessonId}" Width="60"/>
-                <DataGridTextColumn Header="Tiêu đề" Binding="{Binding Title}" Width="*"/>
-                <DataGridTextColumn Header="Nội dung" Binding="{Binding Content}" Width="2*"/>
-                <DataGridCheckBoxColumn Header="Đã dạy" Binding="{Binding IsTaught}" Width="80"/>
-                <DataGridTemplateColumn Header="Điểm danh" Width="100">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Điểm danh" 
-                        Padding="4,2"
-                        Click="Attendance_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Border Grid.Row="1" Background="White" CornerRadius="8" BorderBrush="#DEE2E6" BorderThickness="1">
+            <DataGrid x:Name="LessonsDataGrid"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      Margin="10"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      AlternationCount="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding LessonId}" Width="60"/>
+                    <DataGridTextColumn Header="Tiêu đề" Binding="{Binding Title}" Width="*"/>
+                    <DataGridTextColumn Header="Nội dung" Binding="{Binding Content}" Width="2*"/>
+                    <DataGridTextColumn Header="Ngày Dạy" Binding="{Binding TeachingDate, StringFormat=d}" Width="120"/>
+                    <DataGridCheckBoxColumn Header="Đã dạy" Binding="{Binding IsTaught}" Width="80"/>
+                    <DataGridTemplateColumn Header="Hành động" Width="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Content="Điểm danh" Style="{StaticResource RoundedButtonStyle}" Click="Attendance_Click"/>
+                                    <Button Content="Gen AI" Style="{StaticResource RoundedButtonStyle}" Background="#17A2B8" Click="GenerateAIForLesson_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
 
         <!-- Nút chức năng -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Content="Thêm" Width="80" Margin="5,0" Click="Add_Click"/>
-            <Button Content="Sửa" Width="80" Margin="5,0" Click="Edit_Click"/>
-            <Button Content="Xóa" Width="80" Margin="5,0" Click="Delete_Click"/>
-            <Button Content="Trở về" Width="80" Margin="15,0" Click="Back_Click"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+            <Button Content="Thêm" Width="80" Style="{StaticResource RoundedButtonStyle}" Click="Add_Click"/>
+            <Button Content="Sửa" Width="80" Style="{StaticResource RoundedButtonStyle}" Click="Edit_Click"/>
+            <Button Content="Xóa" Width="80" Style="{StaticResource RoundedButtonStyle}" Background="#DC3545" Click="Delete_Click"/>
+            <Button Content="Trở về" Width="80" Style="{StaticResource RoundedButtonStyle}" Background="#6C757D" Click="Back_Click"/>
         </StackPanel>
 
-        <!-- Overlay che mờ và popup -->
-        <Grid x:Name="AddOverlay" Background="#80000000" Visibility="Collapsed" 
-          Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-          Panel.ZIndex="100">
-            <!-- Form thêm bài học -->
+        <!-- Overlay: Thêm -->
+        <Grid x:Name="AddOverlay"
+              Background="#80000000"
+              Visibility="Collapsed"
+              Grid.RowSpan="3"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Panel.ZIndex="100">
             <Border Background="White" Padding="20" Width="400" Height="300"
-                CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    CornerRadius="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderBrush="#DEE2E6"
+                    BorderThickness="1">
                 <StackPanel>
                     <TextBlock Text="Thêm bài học mới" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
-
                     <TextBlock Text="Tiêu đề:"/>
                     <TextBox x:Name="TitleTextBoxAdd" Margin="0,5"/>
-
                     <TextBlock Text="Nội dung:"/>
                     <TextBox x:Name="ContentTextBoxAdd" Margin="0,5"/>
-
+                    <TextBlock Text="Ngày dạy:"/>
+                    <DatePicker x:Name="TeachingDatePickerAdd" Margin="0,5"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                        <Button Content="Lưu" Width="80" Margin="5,0" Click="SavePopup_Click"/>
-                        <Button Content="Huỷ" Width="80" Margin="5,0" Click="CancelPopup_Click"/>
+                        <Button Content="Lưu" Width="80" Style="{StaticResource RoundedButtonStyle}" Click="SavePopup_Click"/>
+                        <Button Content="Huỷ" Width="80" Style="{StaticResource RoundedButtonStyle}" Background="#6C757D" Click="CancelPopup_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
         </Grid>
 
-        <Grid x:Name="EditOverlay" Background="#80000000" Visibility="Collapsed" 
-      Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-      Panel.ZIndex="100">
+        <!-- Overlay: Sửa -->
+        <Grid x:Name="EditOverlay"
+              Background="#80000000"
+              Visibility="Collapsed"
+              Grid.RowSpan="3"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Panel.ZIndex="100">
             <Border Background="White" Padding="20" Width="400" Height="400"
-            CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    CornerRadius="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderBrush="#DEE2E6"
+                    BorderThickness="1">
                 <StackPanel>
                     <TextBlock Text="{Binding PopupTitle}" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
-
-                    <!-- Tiêu đề -->
                     <TextBlock Text="Tiêu đề:"/>
                     <TextBox x:Name="TitleTextBoxEdit" Margin="0,5"/>
-
-                    <!-- Nội dung -->
                     <TextBlock Text="Nội dung:"/>
                     <TextBox x:Name="ContentTextBoxEdit" Margin="0,5"/>
-
-                    <!-- Record -->
                     <TextBlock Text="Ghi chú (Record):"/>
                     <TextBox x:Name="RecordTextBox" Margin="0,5"/>
-
-                    <!-- Đã dạy -->
+                    <TextBlock Text="Ngày dạy:"/>
+                    <DatePicker x:Name="TeachingDatePickerEdit" Margin="0,5"/>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
                         <CheckBox x:Name="IsTaughtCheckBox" VerticalAlignment="Center"/>
                         <TextBlock Text="Đã dạy" VerticalAlignment="Center" Margin="5,0"/>
                     </StackPanel>
-
-                    <!-- Buttons -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
-                        <Button Content="Lưu" Width="80" Margin="5,0" Click="EditSavePopup_Click"/>
-                        <Button Content="Huỷ" Width="80" Margin="5,0" Click="EditCancelPopup_Click"/>
+                        <Button Content="Lưu" Width="80" Style="{StaticResource RoundedButtonStyle}" Click="EditSavePopup_Click"/>
+                        <Button Content="Huỷ" Width="80" Style="{StaticResource RoundedButtonStyle}" Background="#6C757D" Click="EditCancelPopup_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Border>

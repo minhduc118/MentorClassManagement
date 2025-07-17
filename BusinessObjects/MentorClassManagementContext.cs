@@ -119,6 +119,7 @@ public partial class MentorClassManagementContext : DbContext
             entity.Property(e => e.IsTaught).HasDefaultValue(false);
             entity.Property(e => e.Title).HasMaxLength(200);
             entity.Property(e => e.Record).HasMaxLength(255);
+            entity.Property(e => e.TeachingDate).HasColumnType("date");
             entity.HasOne(d => d.Class).WithMany(p => p.Lessons)
                 .HasForeignKey(d => d.ClassId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

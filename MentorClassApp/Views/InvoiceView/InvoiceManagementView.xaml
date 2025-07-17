@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="MentorClassApp.Views.InvoiceView.InvoiceManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:MentorClassApp.Views.InvoiceView"
+             mc:Ignorable="d"
+             Height="500" Width="998" Background="White">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title -->
+            <RowDefinition Height="*" />
+            <!-- DataGrid -->
+        </Grid.RowDefinitions>
+
+        <!-- 📄 Title -->
+        <TextBlock Text="📄 Quản lý Hóa Đơn"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="#2C3E50"
+                   VerticalAlignment="Top"
+                   Margin="0,0,0,10" />
+
+        <!-- DataGrid section -->
+        <Border Grid.Row="1"
+                CornerRadius="6"
+                Background="#F9F9F9"
+                BorderBrush="#DADADA"
+                BorderThickness="1"
+                Padding="10">
+            <DataGrid x:Name="InvoiceDataGrid"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      RowHeight="35"
+                      ColumnHeaderHeight="45"
+                      FontSize="14"
+                      MaxHeight="400"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      SelectionChanged="InvoiceDataGrid_SelectionChanged">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã HĐ" Binding="{Binding InvoiceId}" Width="70"/>
+                    <DataGridTextColumn Header="Tên học viên" Binding="{Binding StudentName}" Width="140" />
+                    <DataGridTextColumn Header="Lớp" Binding="{Binding ClassName}" Width="150"/>
+                    <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TotalAmount, StringFormat={}{0:N0} đ}" Width="120"/>
+                    <DataGridTextColumn Header="Đã thanh toán" Binding="{Binding PaidAmount, StringFormat={}{0:N0} đ}" Width="120"/>
+                    <DataGridTextColumn Header="Còn nợ" Binding="{Binding DebtAmount, StringFormat={}{0:N0} đ}" Width="120"/>
+                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
+
+                    <DataGridTemplateColumn Header="Hành động" Width="90">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Content="Chi tiết"
+                                            Click="ViewDetails_Click"
+                                            Tag="{Binding InvoiceId}"
+                                            Background="#3498DB"
+                                            Foreground="White"
+                                            Padding="5,2"
+                                            Width="65"
+                                            Margin="0,0,5,0"
+                                            Cursor="Hand"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</UserControl>

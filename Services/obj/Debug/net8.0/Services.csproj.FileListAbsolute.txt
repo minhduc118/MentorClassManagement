@@ -1,8 +1,3 @@
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.csproj.AssemblyReference.cache
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.GeneratedMSBuildEditorConfig.editorconfig
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.AssemblyInfoInputs.cache
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.AssemblyInfo.cs
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.csproj.CoreCompileInputs.cache
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\bin\Debug\net8.0\Services.deps.json
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\bin\Debug\net8.0\Services.dll
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\bin\Debug\net8.0\Services.pdb
@@ -12,9 +7,14 @@ D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\bin
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\bin\Debug\net8.0\BusinessObjects.pdb
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\bin\Debug\net8.0\DataAccessLayer.pdb
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\bin\Debug\net8.0\Repository.pdb
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.csproj.AssemblyReference.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.AssemblyInfoInputs.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.AssemblyInfo.cs
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.csproj.CoreCompileInputs.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.sourcelink.json
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.csproj.Up2Date
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.dll
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\refint\Services.dll
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.pdb
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\ref\Services.dll
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Services\obj\Debug\net8.0\Services.sourcelink.json

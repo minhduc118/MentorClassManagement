@@ -4,62 +4,163 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Height="500" Width="970">
+             MinHeight="500" MinWidth="970">
 
-    <Grid Margin="15">
+    <UserControl.Resources>
+        <!-- Style cho Header của DataGrid -->
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#F1F3F5"/>
+            <Setter Property="Foreground" Value="#343A40"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="#DEE2E6"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        </Style>
+
+        <!-- Style cho hàng -->
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FAFBFC"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F1F3F5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style cho ô -->
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#E3F2FD"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Tiêu đề buổi học -->
+        <!-- Tiêu đề -->
         <TextBlock x:Name="LessonTitleTextBlock"
-                   FontSize="22" FontWeight="Bold"
+                   FontSize="24"
+                   FontWeight="Bold"
                    Foreground="#2C3E50"
+                   Text="Điểm danh buổi học"
                    Margin="0,0,0,16"
                    Grid.Row="0"/>
 
-        <!-- Danh sách học sinh -->
+        <!-- DataGrid -->
         <DataGrid x:Name="AttendanceDataGrid"
-          Grid.Row="1"
-          AutoGenerateColumns="False"
-          CanUserAddRows="False"
-          Margin="0,0,0,10"
-          ItemsSource="{Binding AttendanceList}">
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  AlternationCount="2"
+                  ItemsSource="{Binding AttendanceList}"
+                  HeadersVisibility="Column"
+                  RowHeight="45"
+                  BorderThickness="0"
+                  Background="White"
+                  GridLinesVisibility="None"
+                  Margin="0,0,0,16"
+                  FontSize="14">
+
             <DataGrid.Columns>
-                <!-- Mã học sinh -->
-                <DataGridTextColumn Header="ID" Binding="{Binding StudentID}" Width="80" IsReadOnly="True"/>
+                <!-- Mã sinh viên -->
+                <DataGridTextColumn Header="Mã SV"
+                                    Binding="{Binding StudentID}"
+                                    Width="80"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Foreground" Value="#6C757D"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
-                <!-- Họ tên học sinh -->
-                <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="*" IsReadOnly="True"/>
+                <!-- Họ tên -->
+                <DataGridTextColumn Header="Họ tên"
+                                    Binding="{Binding FullName}"
+                                    Width="2*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="#212529"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="Margin" Value="10,0"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
-                <!-- Có mặt: CheckBox có thể chỉnh sửa -->
+                <!-- Có mặt -->
                 <DataGridTemplateColumn Header="Có mặt" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding IsPresent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-          HorizontalAlignment="Center"/>
+                                      HorizontalAlignment="Center"
+                                      Width="20" Height="20"
+                                      BorderBrush="#CED4DA"
+                                      Background="White"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <!-- Ghi chú: TextBox có thể chỉnh sửa -->
+                <!-- Ghi chú -->
                 <DataGridTemplateColumn Header="Ghi chú" Width="2*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Note, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-         BorderThickness="0" Padding="2"/>
+                            <TextBox Text="{Binding Note, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     BorderThickness="1"
+                                     BorderBrush="#DEE2E6"
+                                     Background="White"
+                                     Padding="6"
+                                     FontSize="13"
+                                     VerticalAlignment="Center"
+                                     Margin="5,2"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Nút lưu -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Lưu" Width="100" Margin="5" Click="SaveAttendance_Click"/>
-            <Button Content="Huỷ" Width="100" Margin="5" Click="CancelAttendance_Click"/>
+        <!-- Nút hành động -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,10,0,0">
+            <Button Content="💾 Lưu"
+                    Width="120" Height="38"
+                    Margin="5"
+                    Background="#007BFF"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    BorderThickness="0"
+                    Click="SaveAttendance_Click"/>
+
+            <Button Content="✖ Huỷ"
+                    Width="100" Height="38"
+                    Margin="5"
+                    Background="#6C757D"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    BorderThickness="0"
+                    Click="CancelAttendance_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

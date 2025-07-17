@@ -7,7 +7,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="LoginWindow.xaml.cs">
+    <Compile Update="LoginControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ClassView\AddEditClassWindow.xaml.cs">
@@ -22,6 +22,15 @@
     <Compile Update="Views\ClassView\StudentManagementErollmentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DashBoard\MentorClassDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\InvoiceView\InvoiceDetailView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\InvoiceView\InvoiceManagementView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\StudentView\AddEditStudentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -33,7 +42,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="LoginWindow.xaml">
+    <Page Update="LoginControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
@@ -49,6 +58,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ClassView\StudentManagementErollmentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DashBoard\MentorClassDashboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\InvoiceView\InvoiceDetailView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\InvoiceView\InvoiceManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\StudentView\AddEditStudentWindow.xaml">

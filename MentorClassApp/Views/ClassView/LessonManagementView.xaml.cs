@@ -170,5 +170,9 @@ namespace MentorClassApp.Views.ClassView
                 MessageBox.Show("Không thể lấy được bài học để điểm danh.");
             }
         }
+        private void GenerateAIForLesson_Click(object sender, RoutedEventArgs e) { 
+        
+        }
+
     }
 }

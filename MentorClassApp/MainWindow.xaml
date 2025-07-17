@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:MentorClassApp"
         mc:Ignorable="d"
         Title="Mentor Class Manager" Height="600" Width="1200"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        >
+    
     <Window.Resources>
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#37474F"/>
@@ -32,6 +35,7 @@
         </Style>
     </Window.Resources>
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
             <!-- Sidebar -->
@@ -51,18 +55,35 @@
                 <Button Content="🏠 Dashboard" Click="Dashboard_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
                 <Button Content="📚 Class Management" Click="Class_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
                 <Button Content="👩‍🎓 Student Management" Click="Student_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
-                <Button Content="📝 Enrollment Management" Click="Enrollment_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
                 <Button Content="💳 Invoice Management" Click="Invoice_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
-                <Button Content="💰 Payment Management" Click="Payment_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
-                <Button Content="📖 Lesson Management" Click="Lesson_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
-                <Button Content="📊 Teaching Progress" Click="TeachingProgress_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
                 <Button Content="📈 Report / Export" Click="Report_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
+                <Button Content="🚪 Exit" Click="Exit_Click" Margin="10" Style="{StaticResource MenuButtonStyle}" />
             </StackPanel>
         </Border>
+        
+        <ContentControl x:Name="MainContent"
+                    Grid.Column="1"
+                    Background="#FAFAFA"
+                    Visibility="Collapsed"/>
 
         <!-- Main Content Area -->
-        <Grid Grid.Column="1" Background="#FAFAFA">
-            <ContentControl x:Name="MainContent"/>
+        <Grid x:Name="LoginOverlay"
+      Background="#FFFFFFDD"
+      Grid.ColumnSpan="2"
+      Visibility="Visible"
+      Panel.ZIndex="99">
+
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="White"
+                CornerRadius="10"
+                Padding="20"
+                BorderBrush="LightGray"
+                BorderThickness="1"
+                MaxWidth="600"
+                MaxHeight="500">
+                    <local:LoginControl x:Name="LoginControlView"/>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

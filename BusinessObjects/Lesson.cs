@@ -17,6 +17,7 @@ public partial class Lesson
 
     public bool? IsTaught { get; set; }
 
+    public DateTime? TeachingDate { get; set; }
     public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 
     public virtual MentorClass Class { get; set; } = null!;

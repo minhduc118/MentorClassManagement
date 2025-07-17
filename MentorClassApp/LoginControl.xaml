@@ -1,0 +1,228 @@
+﻿<UserControl x:Class="MentorClassApp.LoginControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="449" Width="348"
+             Background="Transparent">
+
+    <UserControl.Resources>
+        <!-- Button Style -->
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#37474F" Offset="0"/>
+                        <GradientStop Color="#546E7A" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="12"
+                                BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="2" Opacity="0.2"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#455A64" Offset="0"/>
+                                            <GradientStop Color="#607D8B" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#263238" Offset="0"/>
+                                            <GradientStop Color="#37474F" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- TextBox Style - Fixed -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#F9FAFB"/>
+            <Setter Property="BorderBrush" Value="#E5E7EB"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#37474F"/>
+            <Setter Property="CaretBrush" Value="#37474F"/>
+            <Setter Property="SelectionBrush" Value="#37474F"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                        Focusable="false"
+                                        HorizontalScrollBarVisibility="Hidden"
+                                        VerticalScrollBarVisibility="Hidden"
+                                        Padding="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#9CA3AF"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="White"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#37474F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- PasswordBox Style - Fixed -->
+        <Style x:Key="ModernPasswordBox" TargetType="PasswordBox">
+            <Setter Property="Background" Value="#F9FAFB"/>
+            <Setter Property="BorderBrush" Value="#E5E7EB"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#37474F"/>
+            <Setter Property="CaretBrush" Value="#37474F"/>
+            <Setter Property="SelectionBrush" Value="#37474F"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                        Focusable="false"
+                                        HorizontalScrollBarVisibility="Hidden"
+                                        VerticalScrollBarVisibility="Hidden"
+                                        Padding="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#9CA3AF"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="White"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#37474F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- Background Gradient -->
+    <Grid>
+        <!-- Main Container -->
+        <Border Background="White"
+                CornerRadius="20"
+                Padding="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                MaxWidth="400"
+                MinWidth="350" Width="348">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="5" Opacity="0.3"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <!-- Header với Logo + Company Name -->
+                <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,40">
+                    <!-- Logo Placeholder -->
+                    <Image x:Name="bui" Source="Images/logo.png"
+                           Width="58"
+                           Height="40"
+                           Margin="0"
+                           VerticalAlignment="Center"/>
+
+                    <!-- Company Name -->
+                    <TextBlock Text="DUTE"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="#37474F"
+                               VerticalAlignment="Center"
+                               Margin="0,0,0,0"/>
+                </StackPanel>
+
+                <!-- Username -->
+                <StackPanel Margin="0,0,0,25">
+                    <TextBlock Text="Tài khoản" 
+                               FontWeight="SemiBold" 
+                               FontSize="14"
+                               Foreground="#37474F"
+                               Margin="0,0,0,8"/>
+                    <TextBox x:Name="txtUsername"
+                             Style="{StaticResource ModernTextBox}"
+                             Height="48"
+                             TabIndex="1"/>
+                </StackPanel>
+
+                <!-- Password -->
+                <StackPanel Margin="0,0,0,30">
+                    <TextBlock Text="Mật khẩu" 
+                               FontWeight="SemiBold" 
+                               FontSize="14"
+                               Foreground="#37474F"
+                               Margin="0,0,0,8"/>
+                    <PasswordBox x:Name="txtPassword"
+                                 Style="{StaticResource ModernPasswordBox}"
+                                 Height="48"
+                                 TabIndex="2"/>
+                </StackPanel>
+
+                <!-- Login Button -->
+                <Button Content="Đăng nhập"
+                        Style="{StaticResource ModernButton}"
+                        Height="48"
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        Click="Login_Click"
+                        TabIndex="3"/>
+
+                <!-- Forgot Password Link -->
+                <TextBlock Text="Quên mật khẩu?" 
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,0"
+                           FontSize="14"
+                           Foreground="#37474F"
+                           TextDecorations="Underline"
+                           Cursor="Hand"
+                           />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

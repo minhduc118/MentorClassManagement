@@ -1,0 +1,12 @@
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\bin\Debug\net8.0\Utils.deps.json
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\bin\Debug\net8.0\Utils.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\bin\Debug\net8.0\Utils.pdb
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\Utils.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\Utils.AssemblyInfoInputs.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\Utils.AssemblyInfo.cs
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\Utils.csproj.CoreCompileInputs.cache
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\Utils.sourcelink.json
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\Utils.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\refint\Utils.dll
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\Utils.pdb
+D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\Utils\obj\Debug\net8.0\ref\Utils.dll

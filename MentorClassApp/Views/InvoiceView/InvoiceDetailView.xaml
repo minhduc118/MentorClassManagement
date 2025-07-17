@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="MentorClassApp.Views.InvoiceView.InvoiceDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="900">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề -->
+        <TextBlock Text="🧾 Chi tiết Thanh Toán" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Foreground="#2C3E50" 
+                   Margin="0,0,0,20"/>
+
+        <!-- Thông tin hóa đơn -->
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Thông tin học viên -->
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="0,0,20,0">
+                <TextBlock Text="👩‍🎓 Học viên:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Invoice.Enrollment.Student.FullName}" Margin="0,0,0,10"/>
+
+                <TextBlock Text="📘 Lớp học:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Invoice.Enrollment.Class.ClassName}" Margin="0,0,0,10"/>
+
+                <TextBlock Text="📅 Ngày đăng ký:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Invoice.Enrollment.EnrollmentDate, StringFormat='{}{0:dd/MM/yyyy}'}" Margin="0,0,0,10"/>
+
+                <TextBlock Text="💵 Tổng tiền:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Invoice.TotalAmount, StringFormat='{}{0:N0} đ'}" Margin="0,0,0,10"/>
+
+                <TextBlock Text="✅ Trạng thái:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Invoice.Status}" Margin="0,0,0,10"/>
+            </StackPanel>
+
+            <!-- QR Code -->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                <Image Source="{Binding VietQrImage}" Width="200" Height="200" Margin="0,0,0,10"/>
+                <Button Content="📤 Gửi email thanh toán" 
+                        Background="#3498DB" 
+                        Foreground="White" 
+                        Padding="8,4" 
+                        Click="SendEmail_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Lịch sử thanh toán -->
+        <GroupBox Header="💰 Lịch sử thanh toán" Grid.Row="2">
+            <StackPanel>
+                <DataGrid ItemsSource="{Binding Invoice.Payments}" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  IsReadOnly="True" 
+                  Margin="0,10,0,0"
+                  FontSize="14">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ngày thanh toán" Binding="{Binding PaymentDate, StringFormat='{}{0:dd/MM/yyyy}'}" Width="150"/>
+                        <DataGridTextColumn Header="Số tiền" Binding="{Binding Amount, StringFormat='{}{0:N0} đ'}" Width="150"/>
+                        <DataGridTextColumn Header="Phương thức" Binding="{Binding PaymentMethod}" Width="150"/>
+                        <DataGridTextColumn Header="Ghi chú" Binding="{Binding Note}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Nút thêm thanh toán -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                    <Button Content="✅ Đã thanh toán"
+            Background="#27AE60"
+            Foreground="White"
+            Padding="8,4"
+            Click="ConfirmPaid_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>
