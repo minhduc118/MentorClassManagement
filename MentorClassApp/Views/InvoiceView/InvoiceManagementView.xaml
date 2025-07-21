@@ -5,14 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:MentorClassApp.Views.InvoiceView"
              mc:Ignorable="d"
-             Height="500" Width="998" Background="White">
+             Background="White">
 
-    <Grid Margin="20">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Title -->
-            <RowDefinition Height="*" />
-            <!-- DataGrid -->
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- 📄 Title -->
@@ -21,7 +19,7 @@
                    FontWeight="Bold"
                    Foreground="#2C3E50"
                    VerticalAlignment="Top"
-                   Margin="0,0,0,10" />
+                   Margin="20,20,20,10" />
 
         <!-- DataGrid section -->
         <Border Grid.Row="1"
@@ -29,6 +27,7 @@
                 Background="#F9F9F9"
                 BorderBrush="#DADADA"
                 BorderThickness="1"
+                Margin="20"
                 Padding="10">
             <DataGrid x:Name="InvoiceDataGrid"
                       AutoGenerateColumns="False"
@@ -38,32 +37,31 @@
                       RowHeight="35"
                       ColumnHeaderHeight="45"
                       FontSize="14"
-                      MaxHeight="400"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                       SelectionChanged="InvoiceDataGrid_SelectionChanged">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã HĐ" Binding="{Binding InvoiceId}" Width="70"/>
-                    <DataGridTextColumn Header="Tên học viên" Binding="{Binding StudentName}" Width="140" />
-                    <DataGridTextColumn Header="Lớp" Binding="{Binding ClassName}" Width="150"/>
-                    <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TotalAmount, StringFormat={}{0:N0} đ}" Width="120"/>
-                    <DataGridTextColumn Header="Đã thanh toán" Binding="{Binding PaidAmount, StringFormat={}{0:N0} đ}" Width="120"/>
-                    <DataGridTextColumn Header="Còn nợ" Binding="{Binding DebtAmount, StringFormat={}{0:N0} đ}" Width="120"/>
-                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
+                    <DataGridTextColumn Header="Mã HĐ" Binding="{Binding InvoiceId}" Width="*" />
+                    <DataGridTextColumn Header="Tên học viên" Binding="{Binding StudentName}" Width="*" />
+                    <DataGridTextColumn Header="Lớp" Binding="{Binding ClassName}" Width="*" />
+                    <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TotalAmount, StringFormat={}{0:N0} đ}" Width="*" />
+                    <DataGridTextColumn Header="Đã thanh toán" Binding="{Binding PaidAmount, StringFormat={}{0:N0} đ}" Width="*" />
+                    <DataGridTextColumn Header="Còn nợ" Binding="{Binding DebtAmount, StringFormat={}{0:N0} đ}" Width="*" />
+                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="*" />
 
-                    <DataGridTemplateColumn Header="Hành động" Width="90">
+                    <DataGridTemplateColumn Header="Hành động" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <Button Content="Chi tiết"
-                                            Click="ViewDetails_Click"
-                                            Tag="{Binding InvoiceId}"
-                                            Background="#3498DB"
-                                            Foreground="White"
-                                            Padding="5,2"
-                                            Width="65"
-                                            Margin="0,0,5,0"
-                                            Cursor="Hand"/>
+                            Click="ViewDetails_Click"
+                            Tag="{Binding InvoiceId}"
+                            Background="#3498DB"
+                            Foreground="White"
+                            Padding="5,2"
+                            Width="65"
+                            Margin="0,0,5,0"
+                            Cursor="Hand"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

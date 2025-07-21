@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessObjects;
-using MentorClassApp.Views.Class;
 using MentorClassApp.Views.ClassView;
 using Microsoft.EntityFrameworkCore;
 using Repository;
@@ -27,6 +26,8 @@ namespace MentorClassApp.Views
     {
         private IClassService _classService;
         private List<MentorClass> _classes;
+        private MentorClass currentEditingClass;
+        private bool isEditMode = false;
         public ClassManagementView()
         {
             var dbContext = new MentorClassManagementContext();
@@ -51,26 +52,40 @@ namespace MentorClassApp.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var addClassWindow = new AddEditClassWindow();
-            addClassWindow.Owner = Window.GetWindow(this);
-            if (addClassWindow.ShowDialog() == true)
-            {
-                LoadClass();
-            }
+            currentEditingClass = new MentorClass();
+            isEditMode = false;
+
+            txtClassNameOverlay.Text = "";
+            txtDescriptionOverlay.Text = "";
+            dpStartDateOverlay.SelectedDate = null;
+            dpEndDateOverlay.SelectedDate = null;
+            txtTuitionFeeOverlay.Text = "";
+
+            AddEditOverlay.Visibility = Visibility.Visible;
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (ClassesDataGrid.SelectedItem is MentorClass selectedClass) {
-                var editClassWindow = new AddEditClassWindow(selectedClass);
-                editClassWindow.Owner = Window.GetWindow(this);
-                if (editClassWindow.ShowDialog() == true) {
-                    LoadClass();
-                }
-            }
-            else
+            if (ClassesDataGrid.SelectedItem is MentorClass selectedClass)
             {
-                MessageBox.Show("Vui lòng chọn một học viên để chỉnh sửa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                currentEditingClass = new MentorClass
+                {
+                    ClassId = selectedClass.ClassId,
+                    ClassName = selectedClass.ClassName,
+                    Description = selectedClass.Description,
+                    StartDate = selectedClass.StartDate,
+                    EndDate = selectedClass.EndDate,
+                    TuitionFee = selectedClass.TuitionFee
+                };
+                isEditMode = true;
+
+                txtClassNameOverlay.Text = currentEditingClass.ClassName;
+                txtDescriptionOverlay.Text = currentEditingClass.Description;
+                dpStartDateOverlay.SelectedDate = currentEditingClass.StartDate.ToDateTime(TimeOnly.MinValue);
+                dpEndDateOverlay.SelectedDate = currentEditingClass.EndDate.ToDateTime(TimeOnly.MinValue);
+                txtTuitionFeeOverlay.Text = currentEditingClass.TuitionFee.ToString();
+
+                AddEditOverlay.Visibility = Visibility.Visible;
             }
         }
 
@@ -116,6 +131,70 @@ namespace MentorClassApp.Views
                 MessageBox.Show("Không thể lấy được lớp học để quản lý học sinh");
             }
         }
+        private void SaveClassOverlay_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtClassNameOverlay.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên lớp!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            if (!decimal.TryParse(txtTuitionFeeOverlay.Text, out decimal fee) || fee < 0)
+            {
+                MessageBox.Show("Học phí không hợp lệ!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            DateOnly? start = dpStartDateOverlay.SelectedDate.HasValue ? DateOnly.FromDateTime(dpStartDateOverlay.SelectedDate.Value) : null;
+            DateOnly? end = dpEndDateOverlay.SelectedDate.HasValue ? DateOnly.FromDateTime(dpEndDateOverlay.SelectedDate.Value) : null;
+
+            if (start.HasValue && end.HasValue && start > end)
+            {
+                MessageBox.Show("Ngày kết thúc phải lớn hơn ngày bắt đầu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var context = new MentorClassManagementContext();
+            var service = new ClassService(new ClassRepository(context));
+
+            currentEditingClass.ClassName = txtClassNameOverlay.Text.Trim();
+            currentEditingClass.Description = txtDescriptionOverlay.Text.Trim();
+            currentEditingClass.StartDate = start.Value;
+            currentEditingClass.EndDate = end.Value;
+            currentEditingClass.TuitionFee = fee;
+
+            try
+            {
+                if (isEditMode)
+                {
+                    service.UpdateClass(currentEditingClass);
+                    MessageBox.Show("Cập nhật lớp thành công!");
+                }
+                else
+                {
+                    // Kiểm tra tên lớp trùng
+                    var exist = service.GetAllClasses().FirstOrDefault(c => c.ClassName.ToLower() == currentEditingClass.ClassName.ToLower());
+                    if (exist != null)
+                    {
+                        MessageBox.Show("Tên lớp đã tồn tại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    service.AddClass(currentEditingClass);
+                    MessageBox.Show("Thêm lớp thành công!");
+                }
+
+                LoadClass(); // gọi lại để refresh datagrid
+                AddEditOverlay.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+        private void CancelClassOverlay_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditOverlay.Visibility = Visibility.Collapsed;
+        }
     }
 }

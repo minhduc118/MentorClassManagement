@@ -196,64 +196,58 @@
                       ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" 
-                                        Binding="{Binding ClassId}" 
-                                        Width="50"
-                                        ElementStyle="{StaticResource {x:Type TextBlock}}"/>
+                        Binding="{Binding ClassId}" 
+                        Width="1*"/>
                     <DataGridTextColumn Header="Tên lớp" 
-                                        Binding="{Binding ClassName}" 
-                                        Width="200"
-                                        ElementStyle="{StaticResource {x:Type TextBlock}}"/>
+                        Binding="{Binding ClassName}" 
+                        Width="2*"/>
                     <DataGridTextColumn Header="Mô tả" 
-                                        Binding="{Binding Description}" 
-                                        Width="250"
-                                        ElementStyle="{StaticResource {x:Type TextBlock}}"/>
+                        Binding="{Binding Description}" 
+                        Width="3*"/>
                     <DataGridTextColumn Header="Ngày bắt đầu" 
-                                        Binding="{Binding StartDate, StringFormat=dd/MM/yyyy}" 
-                                        Width="120"
-                                        ElementStyle="{StaticResource {x:Type TextBlock}}"/>
+                        Binding="{Binding StartDate, StringFormat=dd/MM/yyyy}" 
+                        Width="1.5*"/>
                     <DataGridTextColumn Header="Ngày kết thúc" 
-                                        Binding="{Binding EndDate, StringFormat=dd/MM/yyyy}" 
-                                        Width="120"
-                                        ElementStyle="{StaticResource {x:Type TextBlock}}"/>
+                        Binding="{Binding EndDate, StringFormat=dd/MM/yyyy}" 
+                        Width="1.5*"/>
                     <DataGridTextColumn Header="Học phí" 
-                                        Binding="{Binding TuitionFee, StringFormat={}{0:N0} VNĐ}" 
-                                        Width="140"
-                                        ElementStyle="{StaticResource {x:Type TextBlock}}"/>
-                    <DataGridTemplateColumn Header="Thao tác" Width="220">
+                        Binding="{Binding TuitionFee, StringFormat={}{0:N0} VNĐ}" 
+                        Width="2*"/>
+                    <DataGridTemplateColumn Header="Thao tác" Width="3*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" 
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Margin="4">
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="4">
                                     <Button Content="Bài học" 
-                                            Style="{StaticResource SecondaryButton}"
-                                            Width="50"
-                                            Height="26"
-                                            Margin="1" 
-                                            Click="AddLesson_Click"
-                                            ToolTip="Quản lý bài học"/>
+                            Style="{StaticResource SecondaryButton}"
+                            Width="50"
+                            Height="26"
+                            Margin="1" 
+                            Click="AddLesson_Click"
+                            ToolTip="Quản lý bài học"/>
                                     <Button Content="Học sinh" 
-                                            Style="{StaticResource SecondaryButton}"
-                                            Width="55"
-                                            Height="26"
-                                            Margin="1" 
-                                            Click="AddStudent_Click"
-                                            ToolTip="Quản lý học sinh"/>
+                            Style="{StaticResource SecondaryButton}"
+                            Width="55"
+                            Height="26"
+                            Margin="1" 
+                            Click="AddStudent_Click"
+                            ToolTip="Quản lý học sinh"/>
                                     <Button Content="Sửa" 
-                                            Style="{StaticResource EditButton}"
-                                            Width="35"
-                                            Height="26"
-                                            Margin="1" 
-                                            Click="Edit_Click"
-                                            ToolTip="Chỉnh sửa lớp học"/>
+                            Style="{StaticResource EditButton}"
+                            Width="35"
+                            Height="26"
+                            Margin="1" 
+                            Click="Edit_Click"
+                            ToolTip="Chỉnh sửa lớp học"/>
                                     <Button Content="Xóa" 
-                                            Style="{StaticResource DeleteButton}"
-                                            Width="35"
-                                            Height="26"
-                                            Margin="1" 
-                                            Click="Delete_Click"
-                                            ToolTip="Xóa lớp học"/>
+                            Style="{StaticResource DeleteButton}"
+                            Width="35"
+                            Height="26"
+                            Margin="1" 
+                            Click="Delete_Click"
+                            ToolTip="Xóa lớp học"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -298,9 +292,57 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
-                   
+
                 </StackPanel>
             </Grid>
         </Border>
+
+        <Border x:Name="AddEditOverlay"
+        Background="#80000000"
+        Visibility="Collapsed"
+        Grid.RowSpan="3"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        Panel.ZIndex="99">
+
+            <Border Width="420"
+            Background="White"
+            CornerRadius="10"
+            Padding="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+
+                <StackPanel>
+                    <TextBlock Text="Thêm / Sửa Lớp Học"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"
+                       Margin="0 0 0 10"/>
+
+                    <TextBlock Text="Tên lớp:" FontWeight="SemiBold"/>
+                    <TextBox x:Name="txtClassNameOverlay" Margin="0,5,0,10"/>
+
+                    <TextBlock Text="Mô tả:" FontWeight="SemiBold"/>
+                    <TextBox x:Name="txtDescriptionOverlay" Margin="0,5,0,10"/>
+
+                    <TextBlock Text="Ngày bắt đầu:" FontWeight="SemiBold"/>
+                    <DatePicker x:Name="dpStartDateOverlay" Margin="0,5,0,10"/>
+
+                    <TextBlock Text="Ngày kết thúc:" FontWeight="SemiBold"/>
+                    <DatePicker x:Name="dpEndDateOverlay" Margin="0,5,0,10"/>
+
+                    <TextBlock Text="Học phí (VNĐ):" FontWeight="SemiBold"/>
+                    <TextBox x:Name="txtTuitionFeeOverlay" Margin="0,5,0,10"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <Button Content="Lưu" Width="80" Margin="0,0,10,0"
+                        Style="{StaticResource PrimaryButton}" Click="SaveClassOverlay_Click"/>
+                        <Button Content="Hủy" Width="80"
+                        Style="{StaticResource DeleteButton}" Click="CancelClassOverlay_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Border>
+
     </Grid>
 </UserControl>

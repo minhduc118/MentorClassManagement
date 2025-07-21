@@ -10,9 +10,6 @@
     <Compile Update="LoginControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ClassView\AddEditClassWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\ClassView\AttendanceView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,9 +43,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ClassView\AddEditClassWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ClassView\AttendanceView.xaml">

@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="MentorClassApp.Views.StudentManagementView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               Height="491" Width="970">
+               MinHeight="491" MinWidth="970">
     
     <Grid Margin="15">
         <Grid.RowDefinitions>
