@@ -28,9 +28,6 @@
     <Compile Update="Views\InvoiceView\InvoiceManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StudentView\AddEditStudentWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\ClassView\ClassManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -61,9 +58,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\InvoiceView\InvoiceManagementView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\StudentView\AddEditStudentWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ClassView\ClassManagementView.xaml">

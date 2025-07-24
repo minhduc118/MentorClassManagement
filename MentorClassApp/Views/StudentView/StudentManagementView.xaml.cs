@@ -25,6 +25,8 @@ namespace MentorClassApp.Views
     {
         private MentorClassManagementContext _dbContext = new MentorClassManagementContext();
         private List<Student> _students;
+        private bool isEditMode = false;
+        private Student editingStudent = null;
         public StudentManagementView()
         {
             InitializeComponent();
@@ -39,29 +41,34 @@ namespace MentorClassApp.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var addStudentWindow = new AddEditStudentWindow();
-            addStudentWindow.Owner = Window.GetWindow(this);
-            if (addStudentWindow.ShowDialog() == true)
-            {
-                LoadStudents();
-            }
-
+            isEditMode = false;
+            editingStudent = null;
+            ClearForm();
+            OverlayContainer.Visibility = Visibility.Visible;
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             if (StudentsDataGrid.SelectedItem is Student selectedStudent)
             {
-                var editStudentWindow = new AddEditStudentWindow(selectedStudent);
-                editStudentWindow.Owner = Window.GetWindow(this);
-                if (editStudentWindow.ShowDialog() == true) {
-                    LoadStudents();
+                isEditMode = true;
+                editingStudent = selectedStudent;
+
+                txtFullName.Text = selectedStudent.FullName;
+                txtEmail.Text = selectedStudent.Email;
+                txtPhone.Text = selectedStudent.Phone;
+                if (dpDateOfBirth.SelectedDate.HasValue)
+                {
+                    selectedStudent.DateOfBirth = DateOnly.FromDateTime(dpDateOfBirth.SelectedDate.Value);
                 }
+
+                OverlayContainer.Visibility = Visibility.Visible;
             }
-            else 
+            else
             {
                 MessageBox.Show("Vui lòng chọn một học viên để chỉnh sửa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -92,8 +99,72 @@ namespace MentorClassApp.Views
             }
             
         }
+        private void ClearForm()
+        {
+            txtFullName.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            dpDateOfBirth.SelectedDate = null;
+        }
 
 
+        private void SaveStudent_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtFullName.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập họ tên!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                using var context = new MentorClassManagementContext();
+                var repo = new StudentRepository(context);
+                var service = new StudentService(repo);
+
+                if (isEditMode && editingStudent != null)
+                {
+                    // Cập nhật
+                    editingStudent.FullName = txtFullName.Text;
+                    editingStudent.Email = txtEmail.Text;
+                    editingStudent.Phone = txtPhone.Text;
+                    if (dpDateOfBirth.SelectedDate.HasValue)
+                    {
+                        editingStudent.DateOfBirth = DateOnly.FromDateTime(dpDateOfBirth.SelectedDate.Value);
+                    }
+                    
+
+                    service.UpdateStudent(editingStudent);
+                    MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    // Thêm mới
+                    var newStudent = new Student
+                    {
+                        FullName = txtFullName.Text,
+                        Email = txtEmail.Text,
+                        Phone = txtPhone.Text,
+                        DateOfBirth = DateOnly.FromDateTime(dpDateOfBirth.SelectedDate.Value)
+                    };
+
+                    service.AddStudent(newStudent);
+                    MessageBox.Show("Thêm học viên thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                OverlayContainer.Visibility = Visibility.Collapsed;
+                LoadStudents();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+         private void CancelStudent_Click(object sender, RoutedEventArgs e)
+        {
+            OverlayContainer.Visibility = Visibility.Collapsed;
+        }
 
         private void StudentsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

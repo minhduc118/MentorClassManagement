@@ -148,7 +148,7 @@ namespace MentorClassApp.Views.ClassView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MentorClassApp;V1.0.0.0;component/views/classview/lessonmanagementview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MentorClassApp;component/views/classview/lessonmanagementview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\ClassView\LessonManagementView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

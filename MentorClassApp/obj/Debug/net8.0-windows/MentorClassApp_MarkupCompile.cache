@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\App.xaml
-11-49454800
+10-203418898
 
-141107329011
+131975442720
 249-954100882
-LoginControl.xaml;MainWindow.xaml;Views\ClassView\AttendanceView.xaml;Views\ClassView\ClassManagementView.xaml;Views\ClassView\LessonManagementView.xaml;Views\ClassView\StudentManagementErollmentView.xaml;Views\DashBoard\MentorClassDashboard.xaml;Views\InvoiceView\InvoiceDetailView.xaml;Views\InvoiceView\InvoiceManagementView.xaml;Views\StudentView\AddEditStudentWindow.xaml;Views\StudentView\StudentManagementView.xaml;
+LoginControl.xaml;MainWindow.xaml;Views\ClassView\AttendanceView.xaml;Views\ClassView\ClassManagementView.xaml;Views\ClassView\LessonManagementView.xaml;Views\ClassView\StudentManagementErollmentView.xaml;Views\DashBoard\MentorClassDashboard.xaml;Views\InvoiceView\InvoiceDetailView.xaml;Views\InvoiceView\InvoiceManagementView.xaml;Views\StudentView\StudentManagementView.xaml;
 
 False
 

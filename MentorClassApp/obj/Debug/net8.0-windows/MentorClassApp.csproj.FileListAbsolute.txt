@@ -89,7 +89,6 @@ D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassA
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\ClassView\StudentManagementErollmentView.baml
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\DashBoard\MentorClassDashboard.baml
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\InvoiceView\InvoiceDetailView.baml
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\StudentView\AddEditStudentWindow.baml
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\StudentView\StudentManagementView.baml
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\LoginControl.g.cs
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\MainWindow.g.cs
@@ -100,7 +99,6 @@ D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassA
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\DashBoard\MentorClassDashboard.g.cs
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\InvoiceView\InvoiceDetailView.g.cs
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\InvoiceView\InvoiceManagementView.g.cs
-D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\StudentView\AddEditStudentWindow.g.cs
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\Views\StudentView\StudentManagementView.g.cs
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\App.g.cs
 D:\FPT UNIVERSITY\SUMMER_2025_SEASON5\PRN212\ProjectManagementClass\MentorClassApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
